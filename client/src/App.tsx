@@ -3,6 +3,8 @@ import React, {useEffect, useState} from 'react';
 //components
 import Footer from './components/footer';
 
+import fire from './fire';
+
 //libraries
 import styled from 'styled-components';
 
@@ -25,11 +27,13 @@ const App: React.FC = () => {
 
   const [code, setCode] = useState('N/A');
 
-  useEffect(()=>{
-    fetch("http://localhost:9000/codesAPI")
-        .then(res => res.text())
-        .then(res => setCode(res))
-        .catch(err => err);  
+  const date = new Date();;
+  const database = fire.database().ref().child('Latest');
+
+  useEffect(()=> {
+    database.on('value',snap=>{
+      setCode(snap.val())
+    })
   })
 
   return (
