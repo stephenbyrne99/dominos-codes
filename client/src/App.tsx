@@ -39,7 +39,7 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <H1>Dominos Code Ireland</H1>
+        <H1>Dominos Code Dublin</H1>
         <img src={logo} className="App-logo" alt="logo" />
         <p>Latest code: </p>
         <Code>{code}</Code>
